@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Informasi Hewan dengan Konfirmasi</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            background-image: url('bg.png');
+            background-size: cover;
+            margin: 0;
+            padding: 10px;
+            color: rgb(2, 2, 2);
+            font-size: 35px;
+        }
+        h1 {
+            text-align: center;
+            color: #0c2d36af;
+        }
+        .animal-info {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: rgba(199, 226, 236, 0.631);
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.174);
+            text-align: center;
+        }
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            cursor: pointer;
+            background-color: #529953cb;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 30px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        img {
+            max-width: 40%;
+            height: auto;
+            border-radius: 20%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 1%;
+        }
+    </style>
+</head>
+<body>
+    <h1>INFOMASI TENTANG HEWAN</h1>
+    <div class="animal-info" id="info">
+        <img id="animal-image" src="" alt="Gambar Hewan" style="display:none;">
+        <p id="animal-description"></p>
+    </div>
+    
+    <div style="text-align: center;">
+        <button onclick="confirmInfo('kucing')">Kucing</button>
+        <button onclick="confirmInfo('ayam')">Ayam</button>
+        <button onclick="confirmInfo('kuda')">Kuda</button>
+    </div>
+
+    <script>
+        function confirmInfo(animal) {
+            const userConfirmed = confirm('Apakah Anda ingin melihat informasi tentang ' + animal + '?');
+            
+            if (userConfirmed) {
+                showInfo(animal); 
+            } else {
+                alert('Anda membatalkan pilihan.');
+            }
+        }
+
+        function showInfo(animal) {
+            let image = '';
+            let description = '';
+            if (animal === 'kucing') {
+                image = 'kucing.png';
+                description = 'Kucing adalah hewan peliharaan yang populer. Mereka dikenal dengan sifatnya yang mandiri dan suka bermain.';
+            } else if (animal === 'ayam') {
+                image = 'ayam.png';
+                description = 'Ayam adalah jenis unggas yang biasa dipelihara untuk diambil telurnya dan dagingnya.';
+            } else if (animal === 'kuda') {
+                image = 'kuda.png'; 
+                description = 'Kuda adalah hewan yang kuat dan cepat, sering digunakan untuk berkuda dan transportasi di masa lalu.';
+            }
+            document.getElementById('animal-image').src = image;
+            document.getElementById('animal-description').innerText = description;
+            document.getElementById('animal-image').style.display = 'block'; 
+        }
+    </script>
+</body>
+</html>
